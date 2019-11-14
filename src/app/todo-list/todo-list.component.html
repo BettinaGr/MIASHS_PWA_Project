@@ -1,7 +1,7 @@
 <section class="todoapp">
   <header class="header">
     <h1>{{titre}}</h1>
-    <form>
+    <form (submit) = "appendItem(newTodoInput.value); newTodoInput.value= '' ">
       <input  #newTodoInput
               name        = "newTodoInput"
               class       = "new-todo"
@@ -13,8 +13,13 @@
     <input  class="toggle-all"
             type="checkbox"
             name="toggleAll"
+            [ngModel]="isAllDone()"
+            (ngModelChange)="toggleAllDone()"
     />
-    <ul class="todo-list">
+    <ul  class="todo-list">
+      <li *ngFor="let item of items" [class.editing] = "itemCompo.showEdit" [class.completed] = "item.isDone">
+        <app-todo-item #itemCompo [data]="item"></app-todo-item>
+      </li>
     </ul>
   </section>
   <footer class="footer">
@@ -34,3 +39,60 @@
   </footer>
 </section>
 <hr/>
+
+
+<!-- <h2>Debug V1</h2>
+<ul>
+  <li *ngFor="let item of items">
+    {{item | json}}
+  </li>
+</ul> -->
+
+<!--Si on clique sur la checkbox, le json n'est pas modifié-->
+<!-- <h2>Debug V2</h2>
+<ul>
+  <li *ngFor="let item of items">
+    <input type="checkbox" [ngModel] = "item.isDone"/>
+    <label>{{item.label}}</label>
+    <pre>{{item | json}}</pre>
+  </li>
+</ul> -->
+
+<!--json ok-->
+<!-- <h2>Debug V3</h2>
+<ul>
+  <li *ngFor="let item of items">
+    <input type="checkbox" [ngModel] = "item.isDone" (ngModelChange)= "itemDone(item, $event)"/>
+    <label>{{item.label}}</label>
+    <pre>{{item | json}}</pre>
+  </li>
+</ul> -->
+
+<!--edition du texte-->
+<!-- <h2>Debug V4</h2>
+<ul>
+  <li *ngFor="let item of items">
+    
+    <input type="checkbox" [ngModel] = "item.isDone" (ngModelChange)= "itemDone(item, $event)"/>
+    <form (submit)="itemLabel(item, newLab.value)">
+      <input type="text" name="label" [ngModel]="item.label" #newLab/>
+    </form>
+    <label>{{item.label}}</label>
+    <pre>{{item | json}}</pre>
+  </li>
+</ul> -->
+
+<!--suppression de l'item-->
+<!-- <h2>Debug V5</h2>
+<ul>
+  <li *ngFor="let item of items">
+    
+    <input type="checkbox" [ngModel] = "item.isDone" (ngModelChange)= "itemDone(item, $event)"/>
+    <form (submit)="itemLabel(item, newLab.value)">
+      <input type="text" name="label" [ngModel]="item.label" #newLab/>
+    </form>
+    <button (click)="removeItem">DELETE</button>
+    <label>{{item.label}}</label>
+    <pre>{{item | json}}</pre>
+  </li>
+</ul> -->
