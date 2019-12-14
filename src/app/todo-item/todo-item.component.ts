@@ -24,6 +24,7 @@ export class TodoItemComponent implements OnInit {
   get label(): string {
     return this.data.label;
   }
+  
   removeItem(item: TodoItemData){
     this.todoService.removeItems(item);
   }
@@ -31,9 +32,5 @@ export class TodoItemComponent implements OnInit {
   itemDone(item: TodoItemData, done: boolean){
     this.todoService.setItemsDone(done, item);
   }
-
-  // itemLabel(item: TodoItemData, label: string){
-  //   this.todoService.setItemsLabel(label, item);
-  // }
 
 }
