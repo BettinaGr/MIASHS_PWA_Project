@@ -1,6 +1,18 @@
 <section class="todoapp">
   <header class="header">
-    <h1>{{titre}}</h1>
+    <!--Pour éditer le titre de la todo-list-->
+    <h1 class="editTitre" *ngIf="!showEditTitre" (dblclick)="showEditTitre = true">{{titre}}</h1>
+    <form (submit)="showEditTitre = false">
+      <input  
+              #newTitreInput
+              class="edit"
+              name="newTitreInput"
+              [(ngModel)]="titre" 
+              (blur)="showEditTitre = false"
+              *ngIf="showEditTitre"
+    
+      />
+    </form>
     <form (submit) = "appendItem(newTodoInput.value); newTodoInput.value= '' ">
       <input  #newTodoInput
               name        = "newTodoInput"
