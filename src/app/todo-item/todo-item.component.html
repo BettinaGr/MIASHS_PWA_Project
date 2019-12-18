@@ -5,7 +5,7 @@
           [ngModel] = "data.isDone" 
           (ngModelChange)= "itemDone(data, $event)"
   />
-  <label 	class="texte" *ngIf="!showEdit" (click)="showEdit = true">{{label}}</label>
+  <label 	class="texte" *ngIf="!showEdit" (dblclick)="showEdit = true">{{label}}</label>
   <button class="destroy" (click)="removeItem(data)"></button>
 </div>
 <form (submit)="showEdit = false">

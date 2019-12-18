@@ -93,5 +93,12 @@ export class TodoListComponent implements OnInit {
     return (this.data.items.length - this.data.items.filter(item=>item.isDone).length);
   }
 
-  
+  /**********  FONCTIONNALITES SUPPLEMENTAIRES **********/
+
+  // Supprimer toutes les tâches
+  removeAllItems(){
+    this.data.items.forEach(item=>{
+      this.todoService.removeItems(item);
+    });
+  }
 }
