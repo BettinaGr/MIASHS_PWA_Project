@@ -1,4 +1,4 @@
-.edit {
+  .edit {
     display: block;
     position: absolute;
     top: -140px;
@@ -10,4 +10,11 @@
     -webkit-text-rendering: optimizeLegibility;
     -moz-text-rendering: optimizeLegibility;
     text-rendering: optimizeLegibility;
+    word-break: break-all;
   }
+
+#btnUndo, #btnRedo {
+  float: left;
+  margin-right: 1%;
+}
+

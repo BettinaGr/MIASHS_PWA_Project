@@ -35,7 +35,7 @@
     </ul>
   </section>
   <footer class="footer">
-    <span class="todo-count"><strong>{{nbItems()}}</strong> restantes</span>
+    <span class="todo-count"><strong>{{nbItems()}}</strong> {{ nbItems() === 0 || nbItems() === 1 ? "restante" : "restantes" }}</span>
     <ul class="filters">
       <li>
         <a class="filterAll"
@@ -56,11 +56,16 @@
     <button class="clear-completed" (click)="removeCheckedItems()" >Supprimer cochées</button>
   </footer>
   <div class="footer">
+    <button class="clear-completed" id="btnUndo">
+      <fa-icon [icon]="faUndo" (click)="undo()" ></fa-icon>
+    </button>
+    <button class="clear-completed" id="btnRedo">
+      <fa-icon [icon]="faRedo" (click)="redo()"></fa-icon>
+    </button>
     <button class="clear-completed" (click)="removeAllItems()" >Supprimer toute la todo list</button>
   </div>
 </section>
 <hr/>
-
 
 <!-- <h2>Debug V1</h2>
 <ul>

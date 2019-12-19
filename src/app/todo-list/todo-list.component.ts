@@ -3,6 +3,10 @@ import {TodoListData} from '../dataTypes/TodoListData';
 import {TodoItemData} from '../dataTypes/TodoItemData';
 import {TodoService} from '../todo.service';
 
+//Importation des boutons undo/redo
+import { faUndo } from '@fortawesome/free-solid-svg-icons';
+import { faRedo } from '@fortawesome/free-solid-svg-icons';
+
 type FCT_FILTER_ITEMS = (item: TodoItemData) => boolean;
 
 @Component({
@@ -29,6 +33,10 @@ export class TodoListComponent implements OnInit {
   private data: TodoListData;
   private titre: string;
 
+  // Boutons undo/redo
+  faUndo = faUndo;
+  faRedo = faRedo;
+
   constructor(private todoService: TodoService) { 
    todoService.getTodoListDataObserver().subscribe(tdl => this.data = tdl);
    this.titre = this.data.label;
@@ -49,16 +57,17 @@ export class TodoListComponent implements OnInit {
 
   // Ajoute un item à la todo list
   appendItem(label: string){
-    console.log(label);
     this.todoService.appendItems(
       {label, isDone: false}
     )
   }
 
+  // Check un item, une tâche
   itemDone(item: TodoItemData, done: boolean){
     this.todoService.setItemsDone(done, item);
   }
   
+  // Changement du label d'un item
   itemLabel(item: TodoItemData, label: string){
     this.todoService.setItemsLabel(label, item);
   }
@@ -98,5 +107,15 @@ export class TodoListComponent implements OnInit {
     this.data.items.forEach(item=>{
       this.todoService.removeItems(item);
     });
+  }
+
+  //undo 
+  undo(){
+    this.todoService.undo();
+  }
+
+  //redo 
+  redo(){
+    this.todoService.redo();
   }
 }
