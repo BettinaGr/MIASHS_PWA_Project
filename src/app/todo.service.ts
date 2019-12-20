@@ -13,16 +13,7 @@ export class TodoService {
 
   constructor() { 
     //Récupération de la todo list stocké dans la mémoire de l'ordinateur
-    if(typeof localStorage!='undefined' && localStorage.getItem('todoList')!==null) {
-      // Récupération de la valeur dans web storage (JSON donc à parser)
-      const tdl = JSON.parse(localStorage.getItem('todoList'));
-      this.todoListSubject.next( {
-        label: tdl.label,
-        items: tdl.items
-      });
-
-
-    }
+    this.getLocalStorage();
   }
 
   getTodoListDataObserver(): Observable<TodoListData> {
@@ -87,6 +78,7 @@ export class TodoService {
         items: action.items
       });
     }
+    this.saveLocalStorage();
   }
 
   // redo
@@ -103,12 +95,13 @@ export class TodoService {
         items: action.items
       });
     }
+    this.saveLocalStorage();
   }
   // On sauvegarde les actions réalisées (ajout, suppression, check ... d'un item) 
   // Appel à a la fonction qui permet le local storage
-  saveAction(before:TodoListData) {
+  saveAction(tdl:TodoListData) {
     // On place l'action qui vient d'être réalisé dans la listUndo pour pouvoir undo/redo
-    this.listUndo.push(before);
+    this.listUndo.push(tdl);
     // On vide la liste des redo
     this.listRedo = [];
     // On sauvegarde dans le local storage
@@ -121,4 +114,15 @@ export class TodoService {
     localStorage.setItem( 'todoList', JSON.stringify(this.todoListSubject.getValue()) );
   }
 
+  // Récupération de la todo list du local storage
+  getLocalStorage(){
+    if(typeof localStorage!='undefined' && localStorage.getItem('todoList')!==null) {
+      // Récupération de la valeur dans web storage (JSON donc à parser)
+      const tdl = JSON.parse(localStorage.getItem('todoList'));
+      this.todoListSubject.next( {
+        label: tdl.label,
+        items: tdl.items
+      });
+    }
+  }
 }
