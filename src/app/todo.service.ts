@@ -20,8 +20,9 @@ export class TodoService {
         label: tdl.label,
         items: tdl.items
       });
+
+
     }
-    console.log("ehif");
   }
 
   getTodoListDataObserver(): Observable<TodoListData> {
@@ -116,9 +117,7 @@ export class TodoService {
 
   // On sauvegarde dans le local storage
   saveLocalStorage(){
-    // Ajout des objets dans la mémoire de l'ordinateur
-    localStorage.setItem('undo', JSON.stringify(this.listUndo));
-    localStorage.setItem('redo', JSON.stringify(this.listRedo));
+    // Ajout de l'objet todoList dans la mémoire de l'ordinateur
     localStorage.setItem( 'todoList', JSON.stringify(this.todoListSubject.getValue()) );
   }
 
