@@ -11,7 +11,18 @@ export class TodoService {
   private listUndo: TodoListData[] = [];
   private listRedo: TodoListData[] = [];
 
-  constructor() { }
+  constructor() { 
+    //Récupération de la todo list stocké dans la mémoire de l'ordinateur
+    if(typeof localStorage!='undefined' && localStorage.getItem('todoList')!==null) {
+      // Récupération de la valeur dans web storage (JSON donc à parser)
+      const tdl = JSON.parse(localStorage.getItem('todoList'));
+      this.todoListSubject.next( {
+        label: tdl.label,
+        items: tdl.items
+      });
+    }
+    console.log("ehif");
+  }
 
   getTodoListDataObserver(): Observable<TodoListData> {
     return this.todoListSubject.asObservable();
@@ -93,10 +104,22 @@ export class TodoService {
     }
   }
   // On sauvegarde les actions réalisées (ajout, suppression, check ... d'un item) 
+  // Appel à a la fonction qui permet le local storage
   saveAction(before:TodoListData) {
     // On place l'action qui vient d'être réalisé dans la listUndo pour pouvoir undo/redo
     this.listUndo.push(before);
     // On vide la liste des redo
     this.listRedo = [];
+    // On sauvegarde dans le local storage
+    this.saveLocalStorage();
+   }
+
+  // On sauvegarde dans le local storage
+  saveLocalStorage(){
+    // Ajout des objets dans la mémoire de l'ordinateur
+    localStorage.setItem('undo', JSON.stringify(this.listUndo));
+    localStorage.setItem('redo', JSON.stringify(this.listRedo));
+    localStorage.setItem( 'todoList', JSON.stringify(this.todoListSubject.getValue()) );
   }
+
 }
