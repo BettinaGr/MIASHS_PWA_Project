@@ -4,7 +4,7 @@ Rapport du projet
 
 ## GUIDE D'INSTALLATION
 
-1. Clônez le répertoire depuis github ou ouvrez le terminal utilisez la commande "git clone https://github.com/BettinaGr/MIASHS_PWA_Project.git" dans le répertoire souhaité.
+1. Clônez le répertoire depuis github ou ouvrez le terminal et utilisez la commande "git clone https://github.com/BettinaGr/MIASHS_PWA_Project.git" dans le répertoire souhaité.
 2. Décompressez le fichier si nécessaire.
 3. Ouvrez le terminal et placez vous dans le répertoire MIASHS_PWA_Project du projet.
 4. Exécutez la commande "npm install".
@@ -73,7 +73,7 @@ Available on: <br/>
 L'application est disponible sur votre téléphone.
 
 - Problème rencontré:
-Lorsque j'ai voulu construit l'application pour exploiter le service worker d'angular, j'ai eu des soucis au niveau de certaines propriétés qui n'étaient pas accessibles car elles étaient en privé. J'ai donc du les passer en public.
+Lorsque j'ai voulu construire l'application pour exploiter le service worker d'angular, j'ai eu des soucis au niveau de certaines propriétés qui n'étaient pas accessibles car elles étaient en privé. J'ai donc du les passer en public.
 
 ### Ajout de notes de types images / vidéos / sons / dessins ...
 
