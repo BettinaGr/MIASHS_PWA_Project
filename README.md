@@ -67,7 +67,8 @@ Pour réaliser cette fonctionnalité, j'ai voulu utiliser le tutoriel suivant : 
 Available on: <br/>
   http://192.168.1.18:8080 <br/>
   http://127.0.0.1:8080 <br/>
-5. Tapez une de ces URLs sur votre téléphone (celui ci doit être sur le même réseau que l'ordinateur sur lequel vous lancez l'application)
+5. Tapez la première de ces URLs sur votre téléphone. Celui ci doit être sur le même réseau que l'ordinateur sur lequel vous lancez l'application. <br/>
+La seconde URL correspond au localhost est ne sera donc pas accessible sur votre téléphone.
 
 - Résultat attendu: 
 L'application est disponible sur votre téléphone.
