@@ -32,6 +32,7 @@ export class TodoListComponent implements OnInit {
   
   private data: TodoListData;
   private titre: string;
+  public showEditTitre: boolean;
 
   // Boutons undo/redo
   faUndo = faUndo;
