@@ -13,6 +13,8 @@
     
       />
     </form>
+    <fa-icon [icon]="faMicro" id="btnReco" size="2x" (click)="startReco()"></fa-icon>
+  
     <form (submit) = "appendItem(newTodoInput.value); newTodoInput.value= '' ">
       <input  #newTodoInput
               name        = "newTodoInput"

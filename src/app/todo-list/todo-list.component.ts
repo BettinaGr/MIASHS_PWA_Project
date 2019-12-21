@@ -1,11 +1,15 @@
-import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input, OnInit, ElementRef, ViewChild} from '@angular/core';
 import {TodoListData} from '../dataTypes/TodoListData';
 import {TodoItemData} from '../dataTypes/TodoItemData';
 import {TodoService} from '../todo.service';
+import {SpeechRecognitionService} from '../speechRecognition.service';
 
 //Importation des boutons undo/redo
 import { faUndo } from '@fortawesome/free-solid-svg-icons';
 import { faRedo } from '@fortawesome/free-solid-svg-icons';
+
+// Importation du bouton pour la reconnaissance vocale
+import { faMicrophone } from '@fortawesome/free-solid-svg-icons';
 
 type FCT_FILTER_ITEMS = (item: TodoItemData) => boolean;
 
@@ -29,6 +33,8 @@ export class TodoListComponent implements OnInit {
   }
 
   @Input() 
+
+  @ViewChild("newTodoInput", {static:false}) private inputTodo:ElementRef;
   
   private data: TodoListData;
   private titre: string;
@@ -38,7 +44,10 @@ export class TodoListComponent implements OnInit {
   faUndo = faUndo;
   faRedo = faRedo;
 
-  constructor(private todoService: TodoService) { 
+  // Bouton microphone
+  faMicro = faMicrophone;
+
+  constructor(private todoService: TodoService, private speechRecognitionService: SpeechRecognitionService) { 
    todoService.getTodoListDataObserver().subscribe(tdl => this.data = tdl);
    this.titre = this.data.label;
   }
@@ -119,4 +128,25 @@ export class TodoListComponent implements OnInit {
   redo(){
     this.todoService.redo();
   }
+
+  // reconnaissance vocale
+  startReco(): void {
+    this.speechRecognitionService.record()
+        .subscribe(
+        //listener
+        (value) => {
+            this.speechRecognitionService.DestroySpeechObject();
+            this.inputTodo.nativeElement.value = value;
+        },
+        //error
+        (err) => {
+            if (err.error == "no-speech") {
+                alert("Entrée micro non détectée");
+            }
+        },
+        //completion
+        () => {
+            this.speechRecognitionService.DestroySpeechObject();
+        });
+}
 }
