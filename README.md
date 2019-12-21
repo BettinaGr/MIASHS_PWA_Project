@@ -60,7 +60,7 @@ Tous les items de la todo-list sont supprimés.
 Pour réaliser cette fonctionnalité, j'ai voulu utiliser le tutoriel suivant : "https://blog.angular-university.io/angular-service-worker/".
 
 - Pour la tester:
-1. Exécutez la commande "ng build --prod"
+1. Exécutez la commande "ng build --prod". Un dossier dist va se créer, cela peut prendre un peu de temps.
 2. Se placez dans le dossier dist grâce à la commande : "cd dist"
 3. Exécutez la commande "http-server"
 4. Un message de ce genre doit s'afficher <br/>
