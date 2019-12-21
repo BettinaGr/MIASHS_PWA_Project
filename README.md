@@ -57,7 +57,7 @@ Tous les items de la todo-list sont supprimés.
 
 ### Passage à une Progressive Web App (PWA) via les technologies standards
 
-Pour réaliser cette fonctionnalité, j'ai voulu utiliser le tutoriel suivant : "https://blog.angular-university.io/angular-service-worker/".
+Pour réaliser cette fonctionnalité, j'ai voulu utilisé le tutoriel suivant : https://blog.angular-university.io/angular-service-worker/
 
 - Pour la tester:
 1. Exécutez la commande "ng build --prod". Un dossier dist va se créer, cela peut prendre un peu de temps.
@@ -75,6 +75,18 @@ L'application est disponible sur votre téléphone.
 
 - Problème rencontré:
 Lorsque j'ai voulu construire l'application pour exploiter le service worker d'angular, j'ai eu des soucis au niveau de certaines propriétés qui n'étaient pas accessibles car elles étaient en privé. J'ai donc du les passer en public.
+
+### Utilisation de reconnaissance vocale
+
+Pour réaliser cette fonctionnalité, j'ai utilisé le tutoriel suivant : https://hassantariqblog.wordpress.com/2016/12/04/angular2-web-speech-api-speech-recognition-in-angular2/?fbclid=IwAR3_ZhyT6hiUfmIj2XSmEK9gT1-NQ0PSB6B_pdUn7qUeBSHNzeSBSnSQLqs
+
+- Pour la tester:
+1. Cliquez sur le micro pour activer la reconnaissance vocale (il faut accepter l'accès au micro)
+2. Dire le nom de la tâche que l'on veut ajouter. Celle ci s'affiche dans le champs de saisie d'un item.
+3. Placez vous dans le champs et saisie et cliquez sur Entrée pour ajouter l'item à la liste
+
+- Problème rencontré:
+Pour que la reconnaissance vocale fonctionne, il faut utiliser Google Chrome.
 
 ### Ajout de notes de types images / vidéos / sons / dessins ...
 
