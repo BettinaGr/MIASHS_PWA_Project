@@ -82,8 +82,8 @@ Pour réaliser cette fonctionnalité, j'ai utilisé le tutoriel suivant : https:
 
 - Pour la tester:
 1. Cliquez sur le micro pour activer la reconnaissance vocale (il faut accepter l'accès au micro)
-2. Dire le nom de la tâche que l'on veut ajouter. Celle ci s'affiche dans le champs de saisie d'un item.
-3. Placez vous dans le champs et saisie et cliquez sur Entrée pour ajouter l'item à la liste
+2. Dîtes le nom de la tâche que vous voulez ajouter. Celle ci s'affiche dans le champs de saisie qui permet d'ajouter un item.
+3. Placez vous dans le champs de saisie et cliquez sur Entrée pour ajouter l'item à la liste
 
 - Problème rencontré:
 Pour que la reconnaissance vocale fonctionne, il faut utiliser Google Chrome.
