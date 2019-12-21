@@ -60,13 +60,14 @@ Tous les items de la todo-list sont supprimés.
 Pour réaliser cette fonctionnalité, j'ai voulu utiliser le tutoriel suivant : "https://blog.angular-university.io/angular-service-worker/".
 
 - Pour la tester:
-1. Se placer dans le dossier dist grâce à la commande : cd dist
-2. Exécuter la commande http-server
-3. Un message de ce genre doit s'afficher <br/>
+1. Exécuter la commande "ng build --prod"
+2. Se placer dans le dossier dist grâce à la commande : cd dist
+3. Exécuter la commande http-server
+4. Un message de ce genre doit s'afficher <br/>
 Available on: <br/>
   http://192.168.1.18:8080 <br/>
   http://127.0.0.1:8080 <br/>
-4. Taper une de ces URLs sur votre téléphone (celui ci doit être sur le même réseau que l'ordinateur sur lequel vous lancer l'application)
+5. Taper une de ces URLs sur votre téléphone (celui ci doit être sur le même réseau que l'ordinateur sur lequel vous lancer l'application)
 
 - Résultat attendu: 
 L'application est disponible sur votre téléphone.
